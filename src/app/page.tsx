@@ -1,5 +1,6 @@
 import Header from "@/app/components/header";
 import Footer from "@/app/components/footer";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -30,11 +31,13 @@ export default function Home() {
                         training, we've got it all.
                       </h2>
                     </div>
-                    <button
-                        className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#f0d9c6] text-[#191410] text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]"
-                    >
-                      <span className="truncate">Explore Services</span>
-                    </button>
+                    <Link href="/book">
+                      <button
+                          className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#f0d9c6] text-[#191410] text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]"
+                      >
+                        <span className="truncate">Book a Service</span>
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -103,11 +106,13 @@ export default function Home() {
                   </div>
                   <div className="flex flex-1 justify-center">
                     <div className="flex justify-center">
-                      <button
-                          className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#f0d9c6] text-[#191410] text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em] grow"
-                      >
-                        <span className="truncate">Book a Service</span>
-                      </button>
+                      <Link href="/book">
+                        <button
+                            className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#f0d9c6] text-[#191410] text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em] grow"
+                        >
+                          <span className="truncate">Book a Service</span>
+                        </button>
+                      </Link>
                     </div>
                   </div>
                 </div>

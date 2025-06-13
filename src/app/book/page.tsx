@@ -1,7 +1,10 @@
 import Header from "@/app/components/header";
 import Footer from "@/app/components/footer";
+import {getServices} from "@/lib/db";
 
-export default function Home() {
+export default async function Home() {
+    const services = await getServices();
+
     return (
         <div className="relative flex size-full min-h-screen flex-col bg-[#fbfaf9] group/design-root overflow-x-hidden"
              style={{ fontFamily: '"Public Sans", "Noto Sans", sans-serif' }}
@@ -29,13 +32,12 @@ export default function Home() {
                                             Discover a world of care and fun for your furry, scaly, or feathered friends. From grooming to
                                             training, we've got it all.
                                         </h2>
+                                        {services.map((service) => (
+                                            <>
+                                                <p>Service: {JSON.stringify(service)}</p>
+                                            </>
+                                        ))}
                                     </div>
-
-                                    <button
-                                        className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#f0d9c6] text-[#191410] text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]"
-                                    >
-                                        <span className="truncate">Explore Services</span>
-                                    </button>
                                 </div>
                             </div>
                         </div>
