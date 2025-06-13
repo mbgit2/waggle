@@ -16,6 +16,7 @@ export default function Header() {
             <div className="flex flex-1 justify-end gap-8">
                 <div className="flex items-center gap-9">
                     <a className="text-[#191410] text-sm font-medium leading-normal" href="#">Services</a>
+                    <a className="text-[#191410] text-sm font-medium leading-normal" href="#">Community</a>
                     <a className="text-[#191410] text-sm font-medium leading-normal" href="#">About</a>
                     <a className="text-[#191410] text-sm font-medium leading-normal" href="#">Contact</a>
                 </div>

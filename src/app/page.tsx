@@ -14,23 +14,19 @@ export default function Home() {
             <div className="layout-content-container flex flex-col max-w-[960px] flex-1">
               <div className="@container">
                 <div className="@[480px]:p-4">
+                  <div className="flex flex-col gap-2 text-center mb-6">
+                    <h1
+                        className="text-black text-2xl font-semibold leading-tight tracking-[-0.033em]  @[480px]:text-3xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]"
+                    >
+                      Where pets get treated better than most humans
+                    </h1>
+                  </div>
                   <div
                       className="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-xl items-center justify-center p-4"
                       style={{
-                            backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBdzXRIjbLf3CHqm5DQxQAYqcIDu1g3z5lhQj6dY9_Uja3Q6Vb7qHNqdjE6QEjwaWGEd5O0ahSYVE2wZrezJJOh28xt4kzSafnC9mmL_TL-l_SxPeHy8208WiooXImXmPf8xGHkclQ0QZ3sOInMqTUpKNW5ZwEq1FifAj4tdJtMAbtPqyG3_xSZRaz2vHQ3efcC75gMPEY5AN5VKxH1FU2caaubm6v38L2rYdCKZd7DErCE_h7c49Is8rGUIvDQ7vHeQnNKdo6DxH0")'
-                          }}
+                        backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDnjvnqo4vRFlZQXFV25yDNR7UgE3C12fejl3BGAPE2fW5Dqfn3cr_hUbAhJKtOCwElnU1QGsvJkSGg18tJMqu2eSHy16O-NhC8oNa7aDDhawcRspyxQuGB5q133fjbBmdF8UPIxTk1ROR2rlFk1N8nr9KOrx7EjPiDFYRh39CEt_Sqh0geEzUkGHGPgSixdVvSPNf1tVJOYHu7a96yxjd1MR25EwraqxdklAPt0noC_vg-Q1A_norV3bnjZmqN4UQiakmGAH4AvZM")'
+                      }}
                   >
-                    <div className="flex flex-col gap-2 text-center">
-                      <h1
-                          className="text-white text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]"
-                      >
-                        Pamper Your Pets with Waggle
-                      </h1>
-                      <h2 className="text-white text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal">
-                        Discover a world of care and fun for your furry, scaly, or feathered friends. From grooming to
-                        training, we've got it all.
-                      </h2>
-                    </div>
                     <Link href="/book">
                       <button
                           className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#f0d9c6] text-[#191410] text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]"
@@ -41,14 +37,15 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <h2 className="text-[#191410] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Some of Our
+              <h2 className="text-[#191410] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Some
+                of Our
                 Services</h2>
               <div className="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
                 <div className="flex flex-col gap-3 pb-3">
                   <div
                       className="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
                       style={{
-                            backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuDwobNe_SnAC_ivt9DxnKRFeat_74s4MQTZ9P5qYzxETwJ2kR-nnUt4A7y3WFgzBUm7YJHRZPf9w_KLfb2OElicPumll2gm4j3t76UVun8NIHAw4YG1NELd4UdD-mnCMo4dKS3npaXvPr-SopcMb_edzV-TM952ULBphtpum17SYjqkCAQXmFXnn4jZTQ89sna45bTO_wKktNBtNHkYPSmFRIK6pImXix6jFEGe9udk6qjsUAhjHmjN0z8DEQLYzcPDbdq5gzAigpo")'
+                        backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuDwobNe_SnAC_ivt9DxnKRFeat_74s4MQTZ9P5qYzxETwJ2kR-nnUt4A7y3WFgzBUm7YJHRZPf9w_KLfb2OElicPumll2gm4j3t76UVun8NIHAw4YG1NELd4UdD-mnCMo4dKS3npaXvPr-SopcMb_edzV-TM952ULBphtpum17SYjqkCAQXmFXnn4jZTQ89sna45bTO_wKktNBtNHkYPSmFRIK6pImXix6jFEGe9udk6qjsUAhjHmjN0z8DEQLYzcPDbdq5gzAigpo")'
                       }}></div>
                   <div>
                     <p className="text-[#191410] text-base font-medium leading-normal">Pet Nail Salons</p>
