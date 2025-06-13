@@ -1,7 +1,7 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import {getServices} from "@/lib/db";
+import {getActiveServices, getServices} from "@/lib/db";
 
 // Define service data structure - you'll need to adjust this based on your actual data
 interface ServiceData {
@@ -17,7 +17,7 @@ export async function bookServices(formData: FormData) {
     const email = formData.get("email") as string;
     const date = formData.get("date") as string;
     const serviceIds = formData.getAll("serviceIds[]") as string[];
-    const services = await getServices()
+    const services = await getActiveServices()
 
 // Get the selected service IDs from the form
     const selectedServiceIds = formData.getAll('serviceIds[]');
@@ -32,22 +32,25 @@ export async function bookServices(formData: FormData) {
         sum + parseFloat(service.price), 0
     );
 
+
+
 // Create the payment object with splits
     const paymentData = {
-        "account_id": "[platform-account-id]",
+        "account_id": process.env.ROOTLINE_PLATFORM_ACCOUNT!,
         "reference": "your-reference",
         "amount": {
             "currency": "EUR",
             "quantity": totalAmount.toFixed(2)
         },
-        "return_url": "https://rootline.com/[PAYMENT_ID]",
+        "return_url": "https://waggle-nine.vercel.app/success",
         "splits": selectedServices.map(service => ({
-            "account_id": `[service-${service.id}-account-id]`, // You'll need to map service IDs to account IDs
+            // "account_id": `${service.submerchant}`, // You'll need to map service IDs to account IDs
+            "account_id": service.submerchantId,
             "amount": {
                 "currency": "EUR",
                 "quantity": parseFloat(service.price).toFixed(2)
             },
-            "reference": `service-${service.id}-payment`
+            "reference": `${service.id}-payment`
         }))
     };
 
@@ -55,15 +58,16 @@ export async function bookServices(formData: FormData) {
 
 
     // Make API request to Rootline
-    const res = await fetch('https://payment-api.rootline.com/v1/payments', {
-        method: 'POST',
-        headers: {
-            'Rootline-Version': '2024-04-23',
-            'Content-Type': 'application/json',
-                'X-Api-Key': process.env.CLIENT_KEY || 'YOUR_SECRET_TOKEN'
-        },
-        body: JSON.stringify(paymentData)
-    });
+    const res = await fetch('https://payment-api.rootline.com/v1/payments',
+        {
+            method: 'POST',
+            headers: {
+                "Rootline-Version": "2024-04-23",
+                "Content-Type": "application/json",
+                "X-Api-Key": process.env.ROOTLINE_API_KEY!
+            },
+            body: JSON.stringify(paymentData)
+        });
 
     if (!res.ok) {
         const errorData = await res.json().catch(() => ({}));
