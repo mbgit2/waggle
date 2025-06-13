@@ -44,9 +44,9 @@ export async function bookServices(formData: FormData) {
         },
         "return_url": "https://waggle-nine.vercel.app/success",
         "splits": selectedServices.map(service => ({
-            "account_id": "acc_7izgydAphlg1NCWH8nutSS",
+            // "account_id": "acc_7izgydAphlg1NCWH8nutSS",
             // "account_id": `${service.submerchant}`, // You'll need to map service IDs to account IDs
-            // "account_id": service.submerchantId,
+            "account_id": service.submerchantId,
             "amount": {
                 "currency": "EUR",
                 "quantity": parseFloat(service.price).toFixed(2)
@@ -56,10 +56,11 @@ export async function bookServices(formData: FormData) {
     };
 
     console.log(paymentData);
+    // console.log(process.env.ROOTLINE_API_KEY!)
 
 
     // Make API request to Rootline
-    const res = await fetch('https://payment-api.rootline.com/v1/payments',
+    const res = await fetch('https://payment-api.staging.rootline.com/v1/payments',
         {
             method: 'POST',
             headers: {
