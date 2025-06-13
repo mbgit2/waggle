@@ -18,7 +18,7 @@ export async function getServices(): Promise<Service[]> {
 
 export async function getActiveServices(): Promise<ServiceWithSubmerchant[]> {
     const results = await sql`
-        SELECT s.id as id, s.name as name, s.description as description, s.submerchant as submerchant, s.type as type, s.price as price, sm.acc_id ad submerchantId
+        SELECT s.id as id, s.name as name, s.description as description, s.submerchant as submerchant, s.type as type, s.price as price, sm.acc_id as submerchantId
         FROM services s
                  JOIN submerchant sm ON sm.name = s.submerchant
         WHERE sm.active = true;
