@@ -1,440 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Waggle - Premium Pet Care Services</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+            rel="stylesheet"
+            as="style"
+            onload="this.rel='stylesheet'"
+            href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Public+Sans%3Awght%40400%3B500%3B700%3B900"
+    />
 
-        :root {
-            --primary: #f97316;
-            --primary-dark: #ea580c;
-            --secondary: #84cc16;
-            --dark: #0f172a;
-            --gray: #64748b;
-            --light: #f8fafc;
-            --success: #10b981;
-            --error: #ef4444;
-        }
+    <title>Stitch Design</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: var(--dark);
-            background: var(--light);
-            overflow-x: hidden;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 5%;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .logo {
-            font-size: 2rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            cursor: pointer;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--gray);
-            font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
-        }
-
-        /* Hero Section */
-        .hero {
-            margin-top: 80px;
-            padding: 5rem 5%;
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
-            animation: float 20s ease-in-out infinite;
-        }
-
-        .hero-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-text h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-            animation: fadeIn 0.8s ease;
-        }
-
-        .hero-text h1 span {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-text p {
-            font-size: 1.25rem;
-            color: var(--gray);
-            margin-bottom: 2rem;
-            animation: fadeIn 0.8s ease 0.2s backwards;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            animation: fadeIn 0.8s ease 0.4s backwards;
-        }
-
-        .btn-secondary {
-            background: white;
-            color: var(--primary);
-            padding: 0.75rem 1.5rem;
-            border: 2px solid var(--primary);
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .btn-secondary:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .hero-image {
-            position: relative;
-            animation: fadeIn 0.8s ease 0.6s backwards;
-        }
-
-        .booking-card {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
-            transform: perspective(1000px) rotateY(-5deg);
-            transition: transform 0.3s ease;
-        }
-
-        .booking-card:hover {
-            transform: perspective(1000px) rotateY(0deg);
-        }
-
-        /* Services Section */
-        .services {
-            padding: 5rem 5%;
-            background: white;
-        }
-
-        .section-header {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 4rem;
-        }
-
-        .section-header h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .service-card {
-            background: var(--light);
-            border-radius: 20px;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 0;
-        }
-
-        .service-card:hover::before {
-            opacity: 0.1;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .service-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 1.5rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: white;
-            position: relative;
-            z-index: 1;
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .service-card p {
-            color: var(--gray);
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(5px);
-            z-index: 2000;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .modal-content {
-            background: white;
-            max-width: 500px;
-            margin: 5% auto;
-            border-radius: 20px;
-            padding: 2rem;
-            animation: fadeIn 0.3s ease, pulse 0.3s ease;
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-
-        .modal-header h3 {
-            font-size: 1.5rem;
-        }
-
-        .close {
-            font-size: 2rem;
-            cursor: pointer;
-            color: var(--gray);
-            transition: color 0.3s ease;
-        }
-
-        .close:hover {
-            color: var(--error);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border: 2px solid #e2e8f0;
-            border-radius: 10px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-
-        /* Success Message */
-        .success-message {
-            display: none;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .success-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 1rem;
-            background: var(--success);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2rem;
-            animation: pulse 0.5s ease;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 3rem 5%;
-            text-align: center;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-text h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-            }
-
-            .nav-links {
-                display: none;
-            }
-        }
-    </style>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 </head>
 <body>
-
+<div class="relative flex size-full min-h-screen flex-col bg-[#fbfaf9] group/design-root overflow-x-hidden" style='font-family: "Public Sans", "Noto Sans", sans-serif;'>
+    <div class="layout-container flex h-full grow flex-col">
+        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f1ede9] px-10 py-3">
+            <div class="flex items-center gap-4 text-[#191410]">
+                <div class="size-4">
+                    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                                d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z"
+                                fill="currentColor"
+                        ></path>
+                    </svg>
+                </div>
+                <h2 class="text-[#191410] text-lg font-bold leading-tight tracking-[-0.015em]">Waggle</h2>
+            </div>
+            <div class="flex flex-1 justify-end gap-8">
+                <div class="flex items-center gap-9">
+                    <a class="text-[#191410] text-sm font-medium leading-normal" href="#">Services</a>
+                    <a class="text-[#191410] text-sm font-medium leading-normal" href="#">About</a>
+                    <a class="text-[#191410] text-sm font-medium leading-normal" href="#">Contact</a>
+                </div>
+                <button
+                        class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#f0d9c6] text-[#191410] text-sm font-bold leading-normal tracking-[0.015em]"
+                >
+                    <span class="truncate">Book Now</span>
+                </button>
+                <div
+                        class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
+                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCA8WE6gjxNt7fTkTdcW5CeDdLLcYY9NuKqsI6eVLdXzioVo6XyWbqY2BBwt5vRgHayYegBeiY31bef5vbgPqbvFWPp0YMhgQkgxXg9Q_zKEt6JRhN_SLK28xMJnITvkUt7gifFFeuAWOZq73g1Mdb_1IaGH9kfq0kRPyQIVF4mSk6-YoR1Aq0YEP--AyYDixxRsK59SjPreSI2gGNvEZfDEPKVIz1tl5jHr3AwRiuG_A24w_QyStF4LREc78kdsk-whLD3tTcgGmk");'
+                ></div>
+            </div>
+        </header>
+        <div class="px-40 flex flex-1 justify-center py-5">
+            <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+                <div class="@container">
+                    <div class="@[480px]:p-4">
+                        <div
+                                class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-xl items-center justify-center p-4"
+                                style='background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBdzXRIjbLf3CHqm5DQxQAYqcIDu1g3z5lhQj6dY9_Uja3Q6Vb7qHNqdjE6QEjwaWGEd5O0ahSYVE2wZrezJJOh28xt4kzSafnC9mmL_TL-l_SxPeHy8208WiooXImXmPf8xGHkclQ0QZ3sOInMqTUpKNW5ZwEq1FifAj4tdJtMAbtPqyG3_xSZRaz2vHQ3efcC75gMPEY5AN5VKxH1FU2caaubm6v38L2rYdCKZd7DErCE_h7c49Is8rGUIvDQ7vHeQnNKdo6DxH0");'
+                        >
+                            <div class="flex flex-col gap-2 text-center">
+                                <h1
+                                        class="text-white text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]"
+                                >
+                                    Pamper Your Pets with Waggle
+                                </h1>
+                                <h2 class="text-white text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal">
+                                    Discover a world of care and fun for your furry, scaly, or feathered friends. From grooming to training, we've got it all.
+                                </h2>
+                            </div>
+                            <button
+                                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#f0d9c6] text-[#191410] text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]"
+                            >
+                                <span class="truncate">Explore Services</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <h2 class="text-[#191410] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Our Services</h2>
+                <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
+                    <div class="flex flex-col gap-3 pb-3">
+                        <div
+                                class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
+                                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDwobNe_SnAC_ivt9DxnKRFeat_74s4MQTZ9P5qYzxETwJ2kR-nnUt4A7y3WFgzBUm7YJHRZPf9w_KLfb2OElicPumll2gm4j3t76UVun8NIHAw4YG1NELd4UdD-mnCMo4dKS3npaXvPr-SopcMb_edzV-TM952ULBphtpum17SYjqkCAQXmFXnn4jZTQ89sna45bTO_wKktNBtNHkYPSmFRIK6pImXix6jFEGe9udk6qjsUAhjHmjN0z8DEQLYzcPDbdq5gzAigpo");'
+                        ></div>
+                        <div>
+                            <p class="text-[#191410] text-base font-medium leading-normal">Pet Nail Salon</p>
+                            <p class="text-[#8d7058] text-sm font-normal leading-normal">Give your pet the perfect paw-dicure.</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-3 pb-3">
+                        <div
+                                class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
+                                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDByPBpAth6j5TCk9SEZcXSxuhKuXPbfcmkv6Gw2XTzZRLD8aDyA4bo98Z25yyGzRda0kshKStToJuLBqHPOePnmR8uKYJY_z0jHfC7CNEQr3XYPjcxzwTADTE9j5tjdXCHhtZAMAuez4D6Smz_ihr952meJCdiH_lsMsimOB9KRV4mbFvuv1xkJ2lJp6dImTfp2Fc10wRTfibJXdRP9EyotrYU50FitbV_3vXTOGlFFBt_bV3z9awc3z0_djyBeetejol7WMjaVw8");'
+                        ></div>
+                        <div>
+                            <p class="text-[#191410] text-base font-medium leading-normal">Pet Funeral Services</p>
+                            <p class="text-[#8d7058] text-sm font-normal leading-normal">Honor your pet's memory with dignity.</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-3 pb-3">
+                        <div
+                                class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
+                                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCXZEzHnWGYP0pLbBQB7cPZSaFrzjg5gEJNml9ANoD2ZsJ0NZ_c2vUyh6yA-ocxyGQpQG3UTkgdWFIiW9xr5aBJeTKcKpF7u8e_lm2QAarAZ7uiPhoSzK6Nx3QkqqaRYpe-bR-9ukb79DgFJfsT6SupZszYmGtLC4f0djpwNbs-5QomDQghDLVIee5YtKOd93KlfX3kl7ZqmbTOA9wXK5fP9ftFC4LMwFfy2X3N_NAnTwpK4yclZVozKPga9YK3yixaHqIUPWGUH_w");'
+                        ></div>
+                        <div>
+                            <p class="text-[#191410] text-base font-medium leading-normal">Pet Training</p>
+                            <p class="text-[#8d7058] text-sm font-normal leading-normal">Train your pet with expert guidance.</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-3 pb-3">
+                        <div
+                                class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
+                                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCaRHcgm8ch-MPa4lwsx__UlYXqKU41IlF3YAIm8CzaYPMl5n9KLy3_7W18EciN_ZmBnV8J-ZbU5R2UQk37Mokb14NDlkFTzmtSkKHKIFRNdCGDIQuxqvwDD0E5xF3dF7tSYpfYFi9Mg5Ykvn1TV5CVPHEV4pc5ZqhoR9CkdRpMobzS_9_V7GcCsP-46K6W91O613wTqwJojXOigEZUcsZTTjNUXfmF5HwuWURAclm4Rrg-tDPomDJXTn0DCk6luFsDiR8EE5WrgBk");'
+                        ></div>
+                        <div>
+                            <p class="text-[#191410] text-base font-medium leading-normal">Pet Photography Salon</p>
+                            <p class="text-[#8d7058] text-sm font-normal leading-normal">Capture your pet's best moments.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="@container">
+                    <div class="flex flex-col justify-end gap-6 px-4 py-10 @[480px]:gap-8 @[480px]:px-10 @[480px]:py-20">
+                        <div class="flex flex-col gap-2 text-center">
+                            <h1
+                                    class="text-[#191410] tracking-light text-[32px] font-bold leading-tight @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] max-w-[720px]"
+                            >
+                                Ready to Spoil Your Pet?
+                            </h1>
+                        </div>
+                        <div class="flex flex-1 justify-center">
+                            <div class="flex justify-center">
+                                <button
+                                        class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#f0d9c6] text-[#191410] text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em] grow"
+                                >
+                                    <span class="truncate">Book a Service</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="flex justify-center">
+            <div class="flex max-w-[960px] flex-1 flex-col">
+                <footer class="flex flex-col gap-6 px-5 py-10 text-center @container">
+                    <div class="flex flex-wrap items-center justify-center gap-6 @[480px]:flex-row @[480px]:justify-around">
+                        <a class="text-[#8d7058] text-base font-normal leading-normal min-w-40" href="#">Privacy Policy</a>
+                        <a class="text-[#8d7058] text-base font-normal leading-normal min-w-40" href="#">Terms of Service</a>
+                        <a class="text-[#8d7058] text-base font-normal leading-normal min-w-40" href="#">Contact Us</a>
+                    </div>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <a href="#">
+                            <div class="text-[#8d7058]" data-icon="TwitterLogo" data-size="24px" data-weight="regular">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                                    <path
+                                            d="M247.39,68.94A8,8,0,0,0,240,64H209.57A48.66,48.66,0,0,0,168.1,40a46.91,46.91,0,0,0-33.75,13.7A47.9,47.9,0,0,0,120,88v6.09C79.74,83.47,46.81,50.72,46.46,50.37a8,8,0,0,0-13.65,4.92c-4.31,47.79,9.57,79.77,22,98.18a110.93,110.93,0,0,0,21.88,24.2c-15.23,17.53-39.21,26.74-39.47,26.84a8,8,0,0,0-3.85,11.93c.75,1.12,3.75,5.05,11.08,8.72C53.51,229.7,65.48,232,80,232c70.67,0,129.72-54.42,135.75-124.44l29.91-29.9A8,8,0,0,0,247.39,68.94Zm-45,29.41a8,8,0,0,0-2.32,5.14C196,166.58,143.28,216,80,216c-10.56,0-18-1.4-23.22-3.08,11.51-6.25,27.56-17,37.88-32.48A8,8,0,0,0,92,169.08c-.47-.27-43.91-26.34-44-96,16,13,45.25,33.17,78.67,38.79A8,8,0,0,0,136,104V88a32,32,0,0,1,9.6-22.92A30.94,30.94,0,0,1,167.9,56c12.66.16,24.49,7.88,29.44,19.21A8,8,0,0,0,204.67,80h16Z"
+                                    ></path>
+                                </svg>
+                            </div>
+                        </a>
+                        <a href="#">
+                            <div class="text-[#8d7058]" data-icon="InstagramLogo" data-size="24px" data-weight="regular">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                                    <path
+                                            d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160ZM176,24H80A56.06,56.06,0,0,0,24,80v96a56.06,56.06,0,0,0,56,56h96a56.06,56.06,0,0,0,56-56V80A56.06,56.06,0,0,0,176,24Zm40,152a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V80A40,40,0,0,1,80,40h96a40,40,0,0,1,40,40ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z"
+                                    ></path>
+                                </svg>
+                            </div>
+                        </a>
+                        <a href="#">
+                            <div class="text-[#8d7058]" data-icon="FacebookLogo" data-size="24px" data-weight="regular">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                                    <path
+                                            d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm8,191.63V152h24a8,8,0,0,0,0-16H136V112a16,16,0,0,1,16-16h16a8,8,0,0,0,0-16H152a32,32,0,0,0-32,32v24H96a8,8,0,0,0,0,16h24v63.63a88,88,0,1,1,16,0Z"
+                                    ></path>
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                    <p class="text-[#8d7058] text-base font-normal leading-normal">@2024 Waggle. All rights reserved.</p>
+                </footer>
+            </div>
+        </footer>
+    </div>
+</div>
 </body>
 </html>
