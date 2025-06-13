@@ -1,7 +1,10 @@
+import Link from "next/link";
+
 export default function Header() {
     return <>
         <header
             className="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f1ede9] px-10 py-3">
+            <Link href="/">
             <div className="flex items-center gap-4 text-[#191410]">
                 <div className="size-4">
                     <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -13,18 +16,22 @@ export default function Header() {
                 </div>
                 <h2 className="text-[#191410] text-lg font-bold leading-tight tracking-[-0.015em]">Waggle</h2>
             </div>
+            </Link>
             <div className="flex flex-1 justify-end gap-8">
-                <div className="flex items-center gap-9">
-                    <a className="text-[#191410] text-sm font-medium leading-normal" href="#">Services</a>
-                    <a className="text-[#191410] text-sm font-medium leading-normal" href="#">Community</a>
-                    <a className="text-[#191410] text-sm font-medium leading-normal" href="#">About</a>
-                    <a className="text-[#191410] text-sm font-medium leading-normal" href="#">Contact</a>
-                </div>
+                <Link href="/onboarding">
+                    <button
+                        className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#f0d9c6] text-[#191410] text-sm font-bold leading-normal tracking-[0.015em]"
+                    >
+                        <span className="truncate">Onboard</span>
+                    </button>
+                </Link>
+                <Link href="/book">
                 <button
                     className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#f0d9c6] text-[#191410] text-sm font-bold leading-normal tracking-[0.015em]"
                 >
                     <span className="truncate">Book Now</span>
                 </button>
+                </Link>
                 <div
                     className="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
                     style={{
