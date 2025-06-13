@@ -10,75 +10,22 @@ interface ServiceData {
     name: string;
 }
 
-// Mock service data - replace with your actual service data source
-const SERVICES_DATA: Record<string, ServiceData> = {
-    "1": {
-        id: "1",
-        subAccountId: "sub_account_id_1",
-        price: 4.00,
-        name: "Service 1"
-    },
-    "2": {
-        id: "2",
-        subAccountId: "sub_account_id_2",
-        price: 16.00,
-        name: "Service 2"
-    },
-    // Add more services as needed
-};
-
 export async function bookServices(formData: FormData) {
     const email = formData.get("email") as string;
     const date = formData.get("date") as string;
     const serviceIds = formData.getAll("serviceIds[]") as string[];
 
-    if (!email || !date || serviceIds.length === 0) {
-        throw new Error("Missing booking information.");
-    }
+    console.log(serviceIds)
 
-    // Calculate total amount and create splits
-    let totalAmount = 0;
-    const splits = serviceIds.map((serviceId, index) => {
-        const service = SERVICES_DATA[serviceId];
-        if (!service) {
-            throw new Error(`Service not found: ${serviceId}`);
-        }
-
-        totalAmount += service.price;
-
-        // Calculate fees for each split
-        const platformFee = (service.price * 0.05).toFixed(2); // 5% platform fee
-        const idealFeeShare = (0.30 * (service.price / totalAmount)).toFixed(2); // Proportional iDEAL fee
-
-        return {
-            account_id: service.subAccountId,
-            amount: {
-                currency: "EUR",
-                quantity: service.price.toFixed(2)
-            },
-            reference: `${service.name} - ${date}`,
-            description: `Booking for ${service.name} on ${date}`,
-        };
-    });
-
-    // Create payment request body
-    const paymentData = {
-        account_id: process.env.ROOTLINE_ACCOUNT_ID, // Main account ID
+    var body = JSON.stringify({
+        account_id: process.env.ROOTLINE_PLATFORM_ACCOUNT,
         amount: {
-            currency: "EUR",
-            quantity: totalAmount.toFixed(2)
+            currency: 'EUR',
+            quantity: '10.00'
         },
-        splits: splits,
-        reference: `BOOKING-${Date.now()}-${email}`,
-        description: `Service booking for ${email} on ${date}`,
-        statement_descriptor: `Booking ${date}`,
-        return_url: `https://waggle-nine.vercel.app`,
-        metadata: {
-            email: email,
-            date: date,
-            serviceIds: serviceIds.join(",")
-        }
-    };
+        reference: 'Pets',
+        return_url: 'https://waggle-nine.vercel.app'
+    })
 
     // Make API request to Rootline
     const res = await fetch('https://payment-api.rootline.com/v1/payments', {
@@ -88,7 +35,7 @@ export async function bookServices(formData: FormData) {
             'Content-Type': 'application/json',
             'X-Api-Key': process.env.ROOTLINE_API_KEY || 'YOUR_SECRET_TOKEN'
         },
-        body: JSON.stringify(paymentData)
+        body: JSON.stringify(body)
     });
 
     if (!res.ok) {
