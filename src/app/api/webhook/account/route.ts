@@ -50,6 +50,7 @@ export async function POST(request: NextRequest) {
 
         // Example implementation:
         try {
+            console.log(account.reference, account.id)
             activateSubmerchant(account.reference, account.id)
             // Create user in database
             // await db.user.create({
