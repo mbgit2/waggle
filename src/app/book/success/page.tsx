@@ -37,14 +37,14 @@ export default function BookingConfirmed() {
                                     ></div>
                                 </div>
                             </div>
-                            <h2 className="text-[28px] font-bold text-center pb-3 pt-5">Booking Confirmed!</h2>
-                            <p className="text-base text-center px-4 pb-3 pt-1">
+                            <h2 className="text-[28px] text-black font-bold text-center pb-3 pt-5">Booking Confirmed!</h2>
+                            <p className="text-black text-base text-center px-4 pb-3 pt-1">
                                 Your pet care service has been successfully booked. We're excited to help you care for your furry friend!
                             </p>
-                            <h3 className="text-lg font-bold tracking-[-0.015em] px-4 pb-2 pt-4">Booking Details</h3>
+                            <h3 className="text-black text-lg font-bold tracking-[-0.015em] px-4 pb-2 pt-4">Booking Details</h3>
                             <div className="p-4 grid grid-cols-[20%_1fr] gap-x-6">
                                 {[
-                                    ['Service', selectedServices.at(0)?.name ?? ''],
+                                    ['Service', selectedServices.at(0)?.name ?? 'Pet yacht vacation'],
                                     ['Date', 'July 22, 2024'],
                                     ['Time', '2:00 PM - 3:00 PM'],
                                     ['Location', 'The banks of the Amstel river'],
