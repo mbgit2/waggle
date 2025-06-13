@@ -76,22 +76,22 @@ export async function bookServices(formData: FormData) {
         console.error("Rootline API error:", errorData);
         throw new Error("Failed to create payment");
     }
-    const data = await res.json();
-    const checkout_url = data.next_action.checkout_url;
-
-
-    const feeData = {
-        "splits": selectedServices.map(service => ({
-            // "account_id": "acc_7izgydAphlg1NCWH8nutSS",
-            // "account_id": `${service.submerchant}`, // You'll need to map service IDs to account IDs
-            "account_id": service.submerchantid,
-            "amount": {
-                "currency": "EUR",
-                "quantity": parseFloat(service.price).toFixed(2)
-            },
-            "reference": `${service.id}-payment`
-        }))
-    };
+    // const data = await res.json();
+    // const checkout_url = data.next_action.checkout_url;
+    //
+    //
+    // const feeData = {
+    //     "splits": selectedServices.map(service => ({
+    //         // "account_id": "acc_7izgydAphlg1NCWH8nutSS",
+    //         // "account_id": `${service.submerchant}`, // You'll need to map service IDs to account IDs
+    //         "account_id": service.submerchantid,
+    //         "amount": {
+    //             "currency": "EUR",
+    //             "quantity": parseFloat(service.price).toFixed(2)
+    //         },
+    //         "reference": `${service.id}-payment`
+    //     }))
+    // };
 
 
     const data = await res.json();
