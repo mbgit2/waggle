@@ -1,5 +1,6 @@
 // app/api/webhooks/account/route.ts
 import { NextRequest, NextResponse } from 'next/server';
+import {activateSubmerchant} from "@/lib/db";
 
 // Define types for the account webhook payload
 interface Account {
@@ -7,6 +8,7 @@ interface Account {
     email?: string;
     name?: string;
     created_at: string;
+    reference: string;
     // Add other account fields as needed
 }
 
@@ -48,6 +50,7 @@ export async function POST(request: NextRequest) {
 
         // Example implementation:
         try {
+            activateSubmerchant(account.reference, account.id)
             // Create user in database
             // await db.user.create({
             //   data: {
