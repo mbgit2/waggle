@@ -44,8 +44,9 @@ export async function bookServices(formData: FormData) {
         },
         "return_url": "https://waggle-nine.vercel.app/success",
         "splits": selectedServices.map(service => ({
+            "account_id": "acc_7izgydAphlg1NCWH8nutSS",
             // "account_id": `${service.submerchant}`, // You'll need to map service IDs to account IDs
-            "account_id": service.submerchantId,
+            // "account_id": service.submerchantId,
             "amount": {
                 "currency": "EUR",
                 "quantity": parseFloat(service.price).toFixed(2)
