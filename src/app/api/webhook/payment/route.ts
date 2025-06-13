@@ -166,6 +166,7 @@ async function handlePaymentPending(event: WebhookEvent) {
 }
 
 async function handleAuthorizationApproved(event: WebhookEvent) {
+    console.log(event)
     const response = await fetch(`https://payment-api.staging.rootline.com/v1/payment/${event.payment.id}/capture`, {
         method: 'POST',
         headers: {
