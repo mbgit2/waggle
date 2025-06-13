@@ -74,6 +74,7 @@ export default function OnboardingForm() {
             await createOnboarding(formData);
         } catch (e) {
             // Prevent form from being cleared on error
+            // @ts-ignore
             e.preventDefault?.();
             alert(e instanceof Error ? e.message : 'Something went wrong');
             redirect('/onboarding')
