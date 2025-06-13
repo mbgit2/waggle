@@ -63,6 +63,6 @@ export async function createSubMerchantWithServices(
     }
 }
 
-export async function activateSubmerchant(name: string): Promise<void> {
-    await sql`UPDATE submerchant SET active = true WHERE name = ${name}`
+export async function activateSubmerchant(name: string, id: string): Promise<void> {
+    await sql`UPDATE submerchant SET active = true, acc_id = ${id} WHERE name = ${name}`
 }
