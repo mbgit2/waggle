@@ -1,21 +1,8 @@
-"use client";
-
 import Header from "@/app/components/header";
 import Footer from "@/app/components/footer";
-import {useEffect, useState} from "react";
-import {Service} from "../../../lib/db/types";
+import {getServices} from "@/lib/db";
 
 export default function BookingConfirmed() {
-    const [selectedServices, setSelectedServices] = useState<Service[]>([]);
-
-    useEffect(() => {
-        // Retrieve saved services from localStorage on page load
-        const storedServices = localStorage.getItem("selectedServices");
-        if (storedServices) {
-            setSelectedServices(JSON.parse(storedServices));
-        }
-    }, []);
-
     return (
         <>
             <div
@@ -44,7 +31,7 @@ export default function BookingConfirmed() {
                             <h3 className="text-lg font-bold tracking-[-0.015em] px-4 pb-2 pt-4">Booking Details</h3>
                             <div className="p-4 grid grid-cols-[20%_1fr] gap-x-6">
                                 {[
-                                    ['Service', selectedServices.at(0)?.name ?? ''],
+                                    ['Service', 'Hamster Funeral Pyre'],
                                     ['Date', 'July 22, 2024'],
                                     ['Time', '2:00 PM - 3:00 PM'],
                                     ['Location', 'The banks of the Amstel river'],

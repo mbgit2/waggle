@@ -2,8 +2,8 @@
 
 import Header from "@/app/components/header";
 import Footer from "@/app/components/footer";
-import {useState} from "react";
 import {Service} from "@/lib/db/types";
+import {useState, useEffect} from "react";
 import {bookServices} from "@/app/book/actions";
 
 interface Props {
@@ -19,15 +19,29 @@ export default function BookingForm({ services }: Props) {
     const selected = services.find((s) => s.id === selectedServiceId);
     const serviceTypes = Array.from(new Set(services.map((s) => s.type)));
 
+    useEffect(() => {
+        // Retrieve saved services from localStorage on page load
+        const storedServices = localStorage.getItem("selectedServices");
+        if (storedServices) {
+            setSelectedServices(JSON.parse(storedServices));
+        }
+    }, []);
+
+
     const addService = () => {
         if (selected && !selectedServices.some((s) => s.id === selected.id)) {
+            const newSelectedServices = [...selectedServices, selected];
             setSelectedServices([...selectedServices, selected]);
+            localStorage.setItem("selectedServices", JSON.stringify(newSelectedServices)); // Save to localStorage
+
         }
         setSelectedServiceId(null);
     };
 
     const removeService = (id: number) => {
+        const newSelectedServices = selectedServices.filter((s) => s.id !== id);
         setSelectedServices(selectedServices.filter((s) => s.id !== id));
+        localStorage.setItem("selectedServices", JSON.stringify(newSelectedServices)); // Save to localStorage
     };
 
     return (
