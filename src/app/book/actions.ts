@@ -19,20 +19,40 @@ export async function bookServices(formData: FormData) {
     const serviceIds = formData.getAll("serviceIds[]") as string[];
     const services = await getServices()
 
+// Get the selected service IDs from the form
+    const selectedServiceIds = formData.getAll('serviceIds[]');
 
-    const service = services.find(service => service.id === 1);
+// Filter services to only include selected ones
+    const selectedServices = services.filter(service =>
+        selectedServiceIds.includes(service.id.toString())
+    );
 
-    console.log(serviceIds)
+// Calculate total amount
+    const totalAmount = selectedServices.reduce((sum, service) =>
+        sum + parseFloat(service.price), 0
+    );
 
-    // var body = JSON.stringify({
-    //     account_id: process.env.ROOTLINE_PLATFORM_ACCOUNT,
-    //     amount: {
-    //         currency: "EUR",
-    //         quantity: services[1].price
-    //     },
-    //     reference: "Pets",
-    //     return_url: "https://waggle-nine.vercel.app/success"
-    // })
+// Create the payment object with splits
+    const paymentData = {
+        "account_id": "[platform-account-id]",
+        "reference": "your-reference",
+        "amount": {
+            "currency": "EUR",
+            "quantity": totalAmount.toFixed(2)
+        },
+        "return_url": "https://rootline.com/[PAYMENT_ID]",
+        "splits": selectedServices.map(service => ({
+            "account_id": `[service-${service.id}-account-id]`, // You'll need to map service IDs to account IDs
+            "amount": {
+                "currency": "EUR",
+                "quantity": parseFloat(service.price).toFixed(2)
+            },
+            "reference": `service-${service.id}-payment`
+        }))
+    };
+
+    console.log(paymentData);
+
 
     // Make API request to Rootline
     const res = await fetch('https://payment-api.rootline.com/v1/payments', {
@@ -42,15 +62,7 @@ export async function bookServices(formData: FormData) {
             'Content-Type': 'application/json',
                 'X-Api-Key': process.env.CLIENT_KEY || 'YOUR_SECRET_TOKEN'
         },
-        body: JSON.stringify({
-            account_id: process.env.ROOTLINE_PLATFORM_ACCOUNT,
-            amount: {
-                currency: "EUR",
-                quantity: services[1].price
-            },
-            reference: "Pets",
-            return_url: "https://waggle-nine.vercel.app/success"
-        })
+        body: JSON.stringify(paymentData)
     });
 
     if (!res.ok) {
