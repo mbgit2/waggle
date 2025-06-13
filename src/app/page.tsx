@@ -41,7 +41,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <h2 className="text-[#191410] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Our
+              <h2 className="text-[#191410] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Some of Our
                 Services</h2>
               <div className="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
                 <div className="flex flex-col gap-3 pb-3">
@@ -51,7 +51,7 @@ export default function Home() {
                             backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuDwobNe_SnAC_ivt9DxnKRFeat_74s4MQTZ9P5qYzxETwJ2kR-nnUt4A7y3WFgzBUm7YJHRZPf9w_KLfb2OElicPumll2gm4j3t76UVun8NIHAw4YG1NELd4UdD-mnCMo4dKS3npaXvPr-SopcMb_edzV-TM952ULBphtpum17SYjqkCAQXmFXnn4jZTQ89sna45bTO_wKktNBtNHkYPSmFRIK6pImXix6jFEGe9udk6qjsUAhjHmjN0z8DEQLYzcPDbdq5gzAigpo")'
                       }}></div>
                   <div>
-                    <p className="text-[#191410] text-base font-medium leading-normal">Pet Nail Salon</p>
+                    <p className="text-[#191410] text-base font-medium leading-normal">Pet Nail Salons</p>
                     <p className="text-[#8d7058] text-sm font-normal leading-normal">Give your pet the perfect
                       paw-dicure.</p>
                   </div>
@@ -75,21 +75,20 @@ export default function Home() {
                         backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuCXZEzHnWGYP0pLbBQB7cPZSaFrzjg5gEJNml9ANoD2ZsJ0NZ_c2vUyh6yA-ocxyGQpQG3UTkgdWFIiW9xr5aBJeTKcKpF7u8e_lm2QAarAZ7uiPhoSzK6Nx3QkqqaRYpe-bR-9ukb79DgFJfsT6SupZszYmGtLC4f0djpwNbs-5QomDQghDLVIee5YtKOd93KlfX3kl7ZqmbTOA9wXK5fP9ftFC4LMwFfy2X3N_NAnTwpK4yclZVozKPga9YK3yixaHqIUPWGUH_w")'
                       }}></div>
                   <div>
-                    <p className="text-[#191410] text-base font-medium leading-normal">Pet Training</p>
-                    <p className="text-[#8d7058] text-sm font-normal leading-normal">Train your pet with expert
-                      guidance.</p>
+                    <p className="text-[#191410] text-base font-medium leading-normal">Pet Motivational Courses</p>
+                    <p className="text-[#8d7058] text-sm font-normal leading-normal">Help your dog realise their inner alpha.</p>
                   </div>
                 </div>
                 <div className="flex flex-col gap-3 pb-3">
                   <div
                       className="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
                       style={{
-                            backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuCaRHcgm8ch-MPa4lwsx__UlYXqKU41IlF3YAIm8CzaYPMl5n9KLy3_7W18EciN_ZmBnV8J-ZbU5R2UQk37Mokb14NDlkFTzmtSkKHKIFRNdCGDIQuxqvwDD0E5xF3dF7tSYpfYFi9Mg5Ykvn1TV5CVPHEV4pc5ZqhoR9CkdRpMobzS_9_V7GcCsP-46K6W91O613wTqwJojXOigEZUcsZTTjNUXfmF5HwuWURAclm4Rrg-tDPomDJXTn0DCk6luFsDiR8EE5WrgBk")'
+                            backgroundImage: 'url("https://i.pinimg.com/736x/10/2d/3a/102d3a91f0ba6b5f19ad2673dcca9247.jpg")'
                           }}
                   ></div>
                   <div>
-                    <p className="text-[#191410] text-base font-medium leading-normal">Pet Photography Salon</p>
-                    <p className="text-[#8d7058] text-sm font-normal leading-normal">Capture your pet's best
+                    <p className="text-[#191410] text-base font-medium leading-normal">Pet Photography Salons</p>
+                    <p className="text-[#8d7058] text-sm font-normal leading-normal">Capture unfurgettable
                       moments.</p>
                   </div>
                 </div>
