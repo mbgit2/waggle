@@ -76,8 +76,9 @@ export async function bookServices(formData: FormData) {
         console.error("Rootline API error:", errorData);
         throw new Error("Failed to create payment");
     }
-    // const data = await res.json();
-    // const checkout_url = data.next_action.checkout_url;
+    const data = await res.json();
+    const checkout_url = data.next_action.checkout_url;
+    console.log(data)
     //
     //
     // const feeData = {
@@ -94,8 +95,8 @@ export async function bookServices(formData: FormData) {
     // };
 
 
-    const data = await res.json();
-    const checkout_url = data.next_action.checkout_url;
+    // const data = await res.json();
+    // const checkout_url = data.next_action.checkout_url;
 
     if (!checkout_url) {
         throw new Error("No checkout URL received from payment provider");
