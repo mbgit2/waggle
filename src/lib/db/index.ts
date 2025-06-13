@@ -62,3 +62,7 @@ export async function createSubMerchantWithServices(
         throw new Error('Failed to create submerchant and services');
     }
 }
+
+export async function activateSubmerchant(name: string): Promise<void> {
+    await sql`UPDATE submerchant SET active = true WHERE name = ${name}`
+}

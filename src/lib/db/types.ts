@@ -19,7 +19,7 @@ export interface ServiceWithSubmerchant {
     submerchant: string,
     type: string,
     price: string,
-    submerchantId: string
+    submerchantid: string
 }
 
 export interface Order {
