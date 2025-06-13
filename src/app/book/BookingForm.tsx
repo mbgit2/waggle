@@ -2,12 +2,12 @@
 
 import Header from "@/app/components/header";
 import Footer from "@/app/components/footer";
-import {Service} from "@/lib/db/types";
+import {Service, ServiceWithSubmerchant} from "@/lib/db/types";
 import {useState, useEffect} from "react";
 import {bookServices} from "@/app/book/actions";
 
 interface Props {
-    services: Service[];
+    services: ServiceWithSubmerchant[];
 }
 
 export default function BookingForm({ services }: Props) {
