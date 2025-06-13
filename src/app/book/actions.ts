@@ -58,24 +58,6 @@ export async function bookServices(formData: FormData) {
             },
             reference: `${service.name} - ${date}`,
             description: `Booking for ${service.name} on ${date}`,
-            fees: [
-                {
-                    flat_rate: {
-                        amount: {
-                            currency: "EUR",
-                            quantity: platformFee
-                        }
-                    }
-                },
-                {
-                    flat_rate: {
-                        amount: {
-                            currency: "EUR",
-                            quantity: idealFeeShare
-                        }
-                    }
-                }
-            ]
         };
     });
 
