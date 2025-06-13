@@ -22,7 +22,7 @@ export default function BookingConfirmed() {
                 className="relative flex min-h-screen flex-col bg-[#fbfaf9] group/design-root overflow-x-hidden"
                 style={{ fontFamily: 'Public Sans, Noto Sans, sans-serif' }}
             >
-                <div className="layout-container flex h-full grow flex-col">
+                <div className="layout-container flex h-full grow flex-col text-black">
                     <Header />
                     <main className="px-40 flex flex-1 justify-center py-5">
                         <div className="flex flex-col w-[512px] max-w-[960px] flex-1 py-5">
@@ -47,7 +47,6 @@ export default function BookingConfirmed() {
                                     ['Service', selectedServices.at(0)?.name ?? 'Pet yacht vacation'],
                                     ['Date', 'July 22, 2024'],
                                     ['Time', '2:00 PM - 3:00 PM'],
-                                    ['Location', 'The banks of the Amstel river'],
                                 ].map(([label, value]) => (
                                     <div key={label} className="col-span-2 grid grid-cols-subgrid border-t border-[#e4dad3] py-5">
                                         <p className="text-sm text-[#8d7058]">{label}</p>
