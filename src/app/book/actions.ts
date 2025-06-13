@@ -12,6 +12,8 @@ interface ServiceData {
 }
 
 export async function bookServices(formData: FormData) {
+    console.log(formData)
+
     const email = formData.get("email") as string;
     const date = formData.get("date") as string;
     const serviceIds = formData.getAll("serviceIds[]") as string[];
