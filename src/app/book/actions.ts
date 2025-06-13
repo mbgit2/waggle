@@ -20,11 +20,11 @@ export async function bookServices(formData: FormData) {
     var body = JSON.stringify({
         account_id: process.env.ROOTLINE_PLATFORM_ACCOUNT,
         amount: {
-            currency: 'EUR',
-            quantity: '10.00'
+            currency: "EUR",
+            quantity: "10.00"
         },
-        reference: 'Pets',
-        return_url: 'https://waggle-nine.vercel.app'
+        reference: "Pets",
+        return_url: "https://waggle-nine.vercel.app"
     })
 
     // Make API request to Rootline
@@ -35,7 +35,7 @@ export async function bookServices(formData: FormData) {
             'Content-Type': 'application/json',
             'X-Api-Key': process.env.ROOTLINE_API_KEY || 'YOUR_SECRET_TOKEN'
         },
-        body: JSON.stringify(body)
+        body: body
     });
 
     if (!res.ok) {
