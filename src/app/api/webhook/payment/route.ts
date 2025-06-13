@@ -83,7 +83,9 @@ export async function POST(request: NextRequest) {
             case 'payment.pending':
                 await handlePaymentPending(event);
                 break;
-
+            case 'authorization.approved':
+                await handleAuthorizationApproved(event);
+                break;
             default:
                 console.log(`Unhandled event type: ${event.event_type}`);
         }
@@ -161,6 +163,22 @@ async function handlePaymentPending(event: WebhookEvent) {
     // TODO: Handle pending payment
     // - Update order status to pending
     // - Set up monitoring for status changes
+}
+
+async function handleAuthorizationApproved(event: WebhookEvent) {
+    const response = await fetch(`https://payment-api.staging.rootline.com/v1/payment/${event.payment.id}/capture`, {
+        method: 'POST',
+        headers: {
+            'Rootline-Version': '2024-04-23',
+            'Content-Type': 'application/json',
+            'X-Api-Key': process.env.ROOTLINE_API_KEY!
+        },
+        body: JSON.stringify({
+            reference: `capture request ${event.payment.id}`
+        })
+    });
+    const data = await response.json();
+    console.log(data)
 }
 
 // Optional: Add request size limit for webhooks
