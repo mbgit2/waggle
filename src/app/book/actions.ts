@@ -81,7 +81,7 @@ export async function bookServices(formData: FormData) {
 
     // Create payment request body
     const paymentData = {
-        account_id: process.env.ROOTLINE_ACCOUNT_ID || "acc_3VfPsTP2kqnjR6LHnOdpVe", // Main account ID
+        account_id: process.env.ROOTLINE_ACCOUNT_ID, // Main account ID
         amount: {
             currency: "EUR",
             quantity: totalAmount.toFixed(2)
@@ -90,7 +90,7 @@ export async function bookServices(formData: FormData) {
         reference: `BOOKING-${Date.now()}-${email}`,
         description: `Service booking for ${email} on ${date}`,
         statement_descriptor: `Booking ${date}`,
-        return_url: `${process.env.NEXT_PUBLIC_BASE_URL || "https://example.com"}/booking/success/[PAYMENT_ID]`,
+        return_url: `https://waggle-nine.vercel.app`,
         metadata: {
             email: email,
             date: date,
