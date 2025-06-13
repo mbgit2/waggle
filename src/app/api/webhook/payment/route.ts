@@ -53,6 +53,8 @@ export async function POST(request: NextRequest) {
         // Get the raw body for signature verification
         const rawBody = await request.text();
 
+        console.log("Received payment webhook", rawBody)
+
         // Get signature from headers (adjust header name based on your provider)
         const signature = request.headers.get('x-webhook-signature');
 
