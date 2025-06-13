@@ -77,7 +77,9 @@ export async function bookServices(formData: FormData) {
         throw new Error("Failed to create payment");
     }
 
-    const { checkout_url } = await res.json();
+
+    const data = await res.json();
+    const checkout_url = data.next_action.checkout_url;
 
     if (!checkout_url) {
         throw new Error("No checkout URL received from payment provider");
